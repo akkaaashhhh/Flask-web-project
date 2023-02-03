@@ -50,7 +50,9 @@ def registerpage():
     form=RegisterForm()  #instance of the forms
     if form.validate_on_submit(): #checks if user has clicked on submit and this happens when all validators are satisfied
         newuser = User(username=form.username.data,
-                       password=form.password1.data) #we didnt use hash because now the hash gets eliminated by the bcrypt
+                       password=form.password1.data,
+                       amount=form.amount.data 
+                       ) #we didnt use hash because now the hash gets eliminated by the bcrypt
         db.session.add(newuser)
         db.session.commit()
         login_user(newuser)

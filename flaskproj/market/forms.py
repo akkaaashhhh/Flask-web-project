@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField,SubmitField
+from wtforms import StringField, PasswordField,SubmitField,IntegerField
 from wtforms.validators import Length,EqualTo,DataRequired,ValidationError
 from market.models import User
 
@@ -14,6 +14,7 @@ class RegisterForm(FlaskForm):
     username = StringField(label='username ', validators=[Length(min=2,max=15),DataRequired()])
     password1 = PasswordField(label='password ',validators=[Length(min=5),DataRequired()])
     password2 = PasswordField(label='Confirm password ',validators=[EqualTo('password1'),DataRequired()])
+    amount = IntegerField(label = 'Budget')
     submit=SubmitField(label='Create Account')
 
 class LoginForm(FlaskForm):
